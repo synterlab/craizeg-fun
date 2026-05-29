@@ -3,17 +3,30 @@ import { Logo } from "@/components/ui/logo";
 import { Badge } from "@/components/ui/badge";
 import {
   Rocket, Star, Link2, Smartphone, Users, Bot, Globe,
-  CheckCircle2, Clock, Circle,
+  CheckCircle2, Clock, Circle, Coins, Lock,
 } from "lucide-react";
 
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+
 type Status = "done" | "active" | "upcoming";
+
+interface BulletItem {
+  text: string;
+  link?: { href: string; label: string };
+  twitter?: { href: string; handle: string };
+}
 
 interface Milestone {
   date: string;
   title: string;
-  items: string[];
+  items: BulletItem[];
   status: Status;
   icon: React.ElementType;
+  highlight?: boolean;
 }
 
 const SHORT_TERM: Milestone[] = [
@@ -23,11 +36,43 @@ const SHORT_TERM: Milestone[] = [
     status: "active",
     icon: Rocket,
     items: [
-      "Web platform goes live at craizeg.fun",
-      "Core features: Tasks, Goals, Notes, Calendar",
-      "PWA support, installable on any device",
-      "Android APK available for direct download",
-      "Guest mode, no sign-up required",
+      { text: "Web platform goes live at craizeg.fun" },
+      { text: "Core features: Tasks, Goals, Notes, Calendar" },
+      { text: "PWA support, installable on any device" },
+      { text: "Android APK available for direct download" },
+      { text: "Guest mode, no sign-up required" },
+    ],
+  },
+  {
+    date: "May 29, 2026",
+    title: "Token Launch: $ZEG",
+    status: "active",
+    icon: Coins,
+    highlight: true,
+    items: [
+      {
+        text: "Official launch of the Craizeg utility token $ZEG",
+        link: { href: "https://kickstart.easya.io/", label: "kickstart.easya.io" },
+        twitter: { href: "https://x.com/easya_kickstart", handle: "@easya_kickstart" },
+      },
+      { text: "$ZEG will power on-chain achievements, rewards, and token-gated features" },
+      { text: "No crypto wallet required to use the core app" },
+      { text: "Community members can participate in the launch via EasyA Kickstart" },
+    ],
+  },
+  {
+    date: "June 1, 2026",
+    title: "Token Lock: 10% Supply",
+    status: "upcoming",
+    icon: Lock,
+    items: [
+      {
+        text: "10% of total $ZEG supply locked via Streamflow Finance",
+        link: { href: "https://app.streamflow.finance", label: "app.streamflow.finance" },
+        twitter: { href: "https://x.com/streamflow_fi", handle: "@streamflow_fi" },
+      },
+      { text: "Locked tokens reserved for long-term ecosystem and team commitments" },
+      { text: "Vesting schedule publicly visible on-chain for full transparency" },
     ],
   },
   {
@@ -36,11 +81,11 @@ const SHORT_TERM: Milestone[] = [
     status: "upcoming",
     icon: Star,
     items: [
-      "Analytics dashboard with streaks, habits, and heatmap",
-      "Reminders and push notifications",
-      "Dark and light theme toggle",
-      "Offline-first sync with local storage",
-      "Performance and accessibility improvements",
+      { text: "Analytics dashboard with streaks, habits, and heatmap" },
+      { text: "Reminders and push notifications" },
+      { text: "Dark and light theme toggle" },
+      { text: "Offline-first sync with local storage" },
+      { text: "Performance and accessibility improvements" },
     ],
   },
   {
@@ -49,11 +94,11 @@ const SHORT_TERM: Milestone[] = [
     status: "upcoming",
     icon: Link2,
     items: [
-      "On-chain task completion verification",
-      "Achievement NFTs, earn rewards for streaks",
-      "Decentralised goal milestones via smart contracts",
-      "Optional wallet connect (no crypto required to use app)",
-      "Transparent, tamper-proof productivity log",
+      { text: "On-chain task completion verification" },
+      { text: "Achievement NFTs, earn rewards for streaks" },
+      { text: "Decentralised goal milestones via smart contracts" },
+      { text: "Optional wallet connect (no crypto required to use app)" },
+      { text: "Transparent, tamper-proof productivity log" },
     ],
   },
 ];
@@ -65,10 +110,10 @@ const LONG_TERM: Milestone[] = [
     status: "upcoming",
     icon: Smartphone,
     items: [
-      "Native Android app submitted to Google Play Store",
-      "Native iOS app submitted to Apple App Store",
-      "In-app review and rating system",
-      "Push notification improvements for native",
+      { text: "Native Android app submitted to Google Play Store" },
+      { text: "Native iOS app submitted to Apple App Store" },
+      { text: "In-app review and rating system" },
+      { text: "Push notification improvements for native" },
     ],
   },
   {
@@ -77,10 +122,10 @@ const LONG_TERM: Milestone[] = [
     status: "upcoming",
     icon: Users,
     items: [
-      "Shared workspaces for small teams",
-      "Assign tasks to team members",
-      "Collaborative goal tracking",
-      "Comments and activity feed on shared goals",
+      { text: "Shared workspaces for small teams" },
+      { text: "Assign tasks to team members" },
+      { text: "Collaborative goal tracking" },
+      { text: "Comments and activity feed on shared goals" },
     ],
   },
   {
@@ -89,10 +134,10 @@ const LONG_TERM: Milestone[] = [
     status: "upcoming",
     icon: Bot,
     items: [
-      "Natural language task creation",
-      "Smart scheduling suggestions",
-      "AI-powered habit analysis and insights",
-      "Goal decomposition: big goals broken into steps",
+      { text: "Natural language task creation" },
+      { text: "Smart scheduling suggestions" },
+      { text: "AI-powered habit analysis and insights" },
+      { text: "Goal decomposition: big goals broken into steps" },
     ],
   },
   {
@@ -101,46 +146,81 @@ const LONG_TERM: Milestone[] = [
     status: "upcoming",
     icon: Globe,
     items: [
-      "Multi-language support (10+ languages)",
-      "Enterprise tier with SSO and admin controls",
-      "Public API for third-party integrations",
-      "Zapier and Notion integration",
+      { text: "Multi-language support (10+ languages)" },
+      { text: "Enterprise tier with SSO and admin controls" },
+      { text: "Public API for third-party integrations" },
+      { text: "Zapier and Notion integration" },
     ],
   },
 ];
 
 const STATUS_CONFIG: Record<Status, { label: string; color: string; Icon: React.ElementType }> = {
   done:     { label: "Completed",   color: "text-green-400 bg-green-400/10 border-green-400/20", Icon: CheckCircle2 },
-  active:   { label: "In Progress", color: "text-primary bg-primary/10 border-primary/20",      Icon: Clock },
-  upcoming: { label: "Upcoming",    color: "text-white/40 bg-white/5 border-white/10",           Icon: Circle },
+  active:   { label: "In Progress", color: "text-primary bg-primary/10 border-primary/20",       Icon: Clock },
+  upcoming: { label: "Upcoming",    color: "text-white/40 bg-white/5 border-white/10",            Icon: Circle },
 };
 
-function MilestoneCard({ m, i }: { m: Milestone; i: number }) {
+function BulletRow({ item }: { item: BulletItem }) {
+  return (
+    <li className="flex items-start gap-2.5 text-sm">
+      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0" />
+      <span className="text-white/55 leading-relaxed">
+        {item.text}
+        {item.link && (
+          <>
+            {" "}
+            <a
+              href={item.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium"
+            >
+              {item.link.label}
+            </a>
+          </>
+        )}
+        {item.twitter && (
+          <a
+            href={item.twitter.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 inline-flex items-center gap-1 text-white/40 hover:text-white/70 text-xs transition-colors"
+          >
+            <XIcon />
+            {item.twitter.handle}
+          </a>
+        )}
+      </span>
+    </li>
+  );
+}
+
+function MilestoneCard({ m }: { m: Milestone }) {
   const s = STATUS_CONFIG[m.status];
   return (
     <div className="relative flex gap-4 md:gap-6">
       <div className="flex flex-col items-center flex-shrink-0">
-        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border ${s.color} transition-all`}>
+        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border ${s.color} ${m.highlight ? "ring-2 ring-primary/30 ring-offset-2 ring-offset-[#080808]" : ""} transition-all`}>
           <m.icon className="w-5 h-5" />
         </div>
         <div className="flex-1 w-px bg-white/8 mt-2 min-h-[2rem]" />
       </div>
-      <div className="flex-1 pb-10">
+      <div className={`flex-1 pb-10 ${m.highlight ? "rounded-2xl bg-primary/5 border border-primary/12 p-4 -mt-1 mb-6" : ""}`}>
         <div className="flex flex-wrap items-center gap-3 mb-3">
           <span className="text-primary font-bold text-sm uppercase tracking-widest">{m.date}</span>
           <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${s.color}`}>
             <s.Icon className="w-3 h-3" />
             {s.label}
           </span>
+          {m.highlight && (
+            <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-primary/15 border border-primary/25 text-primary">
+              Live today
+            </span>
+          )}
         </div>
         <h3 className="font-serif text-white font-black text-xl md:text-2xl mb-4">{m.title}</h3>
         <ul className="space-y-2.5">
-          {m.items.map((item, j) => (
-            <li key={j} className="flex items-start gap-2.5 text-white/55 text-sm">
-              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0" />
-              {item}
-            </li>
-          ))}
+          {m.items.map((item, j) => <BulletRow key={j} item={item} />)}
         </ul>
       </div>
     </div>
@@ -196,7 +276,7 @@ export default function RoadmapPage() {
               <h2 className="font-serif text-white font-black text-2xl md:text-3xl">May to July 2026</h2>
             </div>
             <div>
-              {SHORT_TERM.map((m, i) => <MilestoneCard key={i} m={m} i={i} />)}
+              {SHORT_TERM.map((m, i) => <MilestoneCard key={i} m={m} />)}
             </div>
           </div>
         </section>
@@ -218,7 +298,7 @@ export default function RoadmapPage() {
               <h2 className="font-serif text-white font-black text-2xl md:text-3xl">Q3 2026 and Beyond</h2>
             </div>
             <div>
-              {LONG_TERM.map((m, i) => <MilestoneCard key={i} m={m} i={i} />)}
+              {LONG_TERM.map((m, i) => <MilestoneCard key={i} m={m} />)}
             </div>
           </div>
         </section>
@@ -251,7 +331,10 @@ export default function RoadmapPage() {
       <footer className="border-t border-white/5 bg-[#060606] py-8">
         <div className="container px-4 mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25">© 2026 Craizeg.fun. All rights reserved.</p>
-          <Link to="/" className="text-xs text-white/30 hover:text-primary transition-colors">Back to Home</Link>
+          <div className="flex items-center gap-4 text-xs text-white/30">
+            <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+            <Link to="/" className="hover:text-primary transition-colors">Back to Home</Link>
+          </div>
         </div>
       </footer>
     </div>
