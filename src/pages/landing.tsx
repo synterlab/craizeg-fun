@@ -43,25 +43,28 @@ export default function LandingPage() {
       {/* ── Sticky Navbar ── */}
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-xl">
         <div className="container flex h-16 max-w-6xl items-center justify-between px-4 mx-auto">
-          <Logo size={34} textClassName="text-xl text-white" />
-          <nav className="flex items-center gap-2">
+          <Logo size={32} dark />
+          <nav className="flex items-center gap-1.5">
+            {/* X icon — compact, no label */}
             <a
               href="https://x.com/CraizeG"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-white/70 hover:text-white text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-white/10"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all"
               aria-label="Follow @CraizeG on X"
             >
-              <Twitter className="w-4 h-4" />
-              <span className="hidden sm:inline">@CraizeG</span>
+              {/* X (formerly Twitter) custom SVG — matches current X logo */}
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
             </a>
             <Link to="/login">
-              <Button variant="ghost" className="hidden sm:inline-flex text-white hover:text-white hover:bg-white/10" data-testid="nav-login">
+              <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-white/80 hover:text-white hover:bg-white/10 text-sm h-8 px-3" data-testid="nav-login">
                 Sign In
               </Button>
             </Link>
             <Link to="/onboarding">
-              <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30" data-testid="nav-try-free">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 h-8 px-4 text-sm font-semibold" data-testid="nav-try-free">
                 Try for Free
               </Button>
             </Link>
@@ -265,7 +268,7 @@ export default function LandingPage() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
             <div className="col-span-2">
-              <Logo size={32} textClassName="text-xl text-white mb-1" className="mb-4" />
+              <Logo size={30} dark className="mb-4" />
               <p className="text-white/50 max-w-xs text-sm leading-relaxed">
                 A quiet, personal productivity space for people who want to stay organised without the noise.
               </p>
