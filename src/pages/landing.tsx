@@ -213,7 +213,18 @@ export default function LandingPage() {
                   </Link>
                 </div>
 
-                <div className="slide-up delay-400 flex items-center justify-center md:justify-start gap-8 mt-10">
+                  {/* $ZEG Token link */}
+                  <div className="slide-up delay-300 flex justify-center md:justify-start mt-4">
+                    <Link to="/token">
+                      <button className="flex items-center gap-2 h-10 px-5 rounded-full bg-primary/12 hover:bg-primary/22 border border-primary/30 hover:border-primary/55 text-primary text-sm font-bold transition-all hover:scale-105 active:scale-100">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        $ZEG Token — Live on Solana
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </button>
+                    </Link>
+                  </div>
+
+                  <div className="slide-up delay-400 flex items-center justify-center md:justify-start gap-8 mt-10">
                   {[["100%", "Free"], ["PWA", "Offline"], ["Zero", "Tracking"]].map(([val, label]) => (
                     <div key={label} className="text-center">
                       <p className="text-white font-bold text-lg leading-none" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{val}</p>
