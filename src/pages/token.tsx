@@ -325,7 +325,7 @@ export default function TokenPage() {
                 const Icon = item.icon;
                 return (
                   <div key={item.title}
-                    className={`rounded-2xl bg-gradient-to-br ${item.color} border ${item.border} p-5 flex flex-col gap-3 hover:scale-[1.02] transition-all`}>
+                    className={`rounded-2xl bg-gradient-to-br ${item.color} border ${item.border} p-5 flex flex-col gap-3 hover:scale-[1.01] transition-all duration-200`}>
                     <div className="flex items-start justify-between">
                       <div className={`w-10 h-10 rounded-xl bg-black/30 flex items-center justify-center ${item.iconColor}`}>
                         <Icon className="w-5 h-5" />
@@ -359,7 +359,7 @@ export default function TokenPage() {
                     <h4 className="text-sm font-bold text-white">{step.title}</h4>
                     <p className="text-xs text-white/45 leading-relaxed max-w-[180px]">{step.desc}</p>
                     {i < 2 && (
-                      <div className="hidden sm:flex absolute right-0 top-6 -translate-y-1/2 items-center">
+                      <div className="hidden sm:flex absolute -right-3 top-5 items-center">
                         <ChevronRight className="w-4 h-4 text-white/20" />
                       </div>
                     )}
