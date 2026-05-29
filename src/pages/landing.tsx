@@ -8,7 +8,6 @@ import {
   Sparkles, Shield, Zap,
 } from "lucide-react";
 
-/* ─── Data ─────────────────────────────── */
 const FEATURES = [
   { icon: CheckSquare, title: "Tasks",     desc: "Simple, satisfying lists that actually get done." },
   { icon: Target,      title: "Goals",     desc: "Track progress visually with milestones." },
@@ -21,16 +20,21 @@ const FEATURES = [
 const TICKER_ITEMS = [
   "Free forever", "Works offline", "Android APK",
   "PWA ready", "No account needed", "Privacy first",
-  "Open source", "5 core features",
+  "Open source", "6 core features",
 ];
 
 const STEPS = [
-  { icon: Download, num: "01", title: "Download or open",  desc: "Install the APK or open the web app — no sign-up required." },
+  { icon: Download, num: "01", title: "Download or open",  desc: "Install the APK or open the web app. No sign-up required." },
   { icon: Sparkles, num: "02", title: "Set your goals",    desc: "Add tasks, milestones, and reminders in under a minute." },
   { icon: Zap,      num: "03", title: "Stay on track",     desc: "Check off tasks, visualise progress, build streaks." },
 ];
 
-/* ─── Phone mockup (pure CSS) ─────────── */
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+
 function PhoneMock() {
   return (
     <div className="float-phone relative mx-auto" style={{ width: 210, height: 420 }}>
@@ -84,7 +88,6 @@ function PhoneMock() {
   );
 }
 
-/* ─── Main ─────────────────────────────── */
 export default function LandingPage() {
   const featRef  = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
@@ -107,11 +110,22 @@ export default function LandingPage() {
   return (
     <div className="min-h-[100dvh] flex flex-col w-full bg-[#080808] font-sans overflow-x-hidden">
 
-      {/* ── Navbar ── */}
+      {/* Navbar */}
       <header className="sticky top-0 z-50 w-full border-b border-white/8 bg-black/40 backdrop-blur-xl">
         <div className="container flex h-16 max-w-5xl items-center justify-between px-4 mx-auto">
           <Logo size={30} dark />
           <nav className="flex items-center gap-2">
+            {/* X / Twitter — visible and prominent */}
+            <a
+              href="https://x.com/CraizeG"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow @CraizeG on X"
+              className="flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/8 hover:bg-white/14 border border-white/10 hover:border-white/20 text-white/55 hover:text-white text-xs font-semibold transition-all"
+            >
+              <XIcon />
+              <span className="hidden sm:inline">@CraizeG</span>
+            </a>
             <Link to="/login">
               <Button variant="ghost" size="sm"
                 className="hidden sm:inline-flex text-white/70 hover:text-white hover:bg-white/10 text-sm h-8 px-3">
@@ -130,54 +144,30 @@ export default function LandingPage() {
 
       <main className="flex-1 w-full">
 
-        {/* ── Hero — full-viewport video background ── */}
+        {/* Hero */}
         <section className="relative w-full min-h-[94dvh] flex items-center justify-center overflow-hidden">
-
-          {/* Video background */}
           <div className="absolute inset-0 z-0">
             <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+              autoPlay muted loop playsInline preload="metadata"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ filter: "brightness(0.35) saturate(0.8)" }}
             >
-              {/* SD for mobile, HD for larger screens */}
-              <source
-                src="https://videos.pexels.com/video-files/3576378/3576378-hd_1920_1080_25fps.mp4"
-                type="video/mp4"
-                media="(min-width: 768px)"
-              />
-              <source
-                src="https://videos.pexels.com/video-files/3576378/3576378-sd_640_360_25fps.mp4"
-                type="video/mp4"
-              />
+              <source src="https://videos.pexels.com/video-files/3576378/3576378-hd_1920_1080_25fps.mp4" type="video/mp4" media="(min-width: 768px)" />
+              <source src="https://videos.pexels.com/video-files/3576378/3576378-sd_640_360_25fps.mp4" type="video/mp4" />
             </video>
-
-            {/* Warm orange tone overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-orange-950/60 via-black/20 to-black/50" />
-            {/* Bottom fade to section below */}
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#080808] to-transparent" />
-            {/* Top fade */}
             <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/30 to-transparent" />
-
-            {/* Subtle grain */}
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
               style={{
                 backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                backgroundRepeat: "repeat",
-                backgroundSize: "128px",
+                backgroundRepeat: "repeat", backgroundSize: "128px",
               }}
             />
           </div>
 
-          {/* Hero content */}
           <div className="container relative z-10 px-4 mx-auto max-w-5xl">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-8 py-16 md:py-24">
-
-              {/* Text */}
               <div className="flex-1 text-center md:text-left text-white">
                 <div className="slide-up inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-8 uppercase tracking-widest">
                   <Shield className="w-3 h-3 text-primary" />
@@ -196,7 +186,7 @@ export default function LandingPage() {
                   className="slide-up delay-200 text-white/70 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed"
                   style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)", textShadow: "0 1px 12px rgba(0,0,0,0.5)" }}
                 >
-                  Tasks, goals, notes, and calendar — all in one quiet space
+                  Tasks, goals, notes, and calendar in one quiet space
                   designed for people who want to stay sharp without the noise.
                 </p>
 
@@ -217,7 +207,6 @@ export default function LandingPage() {
                   </Link>
                 </div>
 
-                {/* Micro-stats */}
                 <div className="slide-up delay-400 flex items-center justify-center md:justify-start gap-8 mt-10">
                   {[["100%", "Free"], ["PWA", "Offline"], ["Zero", "Tracking"]].map(([val, label]) => (
                     <div key={label} className="text-center">
@@ -228,13 +217,11 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Phone mockup — hidden on small mobile, shown sm+ */}
               <div className="slide-up delay-500 flex-shrink-0 hidden sm:block">
                 <PhoneMock />
               </div>
             </div>
 
-            {/* Scroll hint */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
               <span className="text-[10px] text-white/50 uppercase tracking-widest font-medium">Scroll</span>
               <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent" style={{ animation: "sweep 2s ease-in-out infinite" }} />
@@ -242,7 +229,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ── Ticker strip ── */}
+        {/* Ticker */}
         <div className="border-y border-white/8 bg-[#0d0d0d] py-3 overflow-hidden">
           <div className="ticker-track">
             {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
@@ -254,7 +241,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* ── Features ── */}
+        {/* Features */}
         <section id="features" className="py-24 bg-[#080808] w-full" ref={featRef}>
           <div className="container px-4 mx-auto max-w-5xl">
             <div className="text-center mb-16">
@@ -282,7 +269,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ── How it works ── */}
+        {/* How it works */}
         <section className="py-24 bg-[#0a0a0a] border-y border-white/5 w-full" ref={stepsRef}>
           <div className="container px-4 mx-auto max-w-5xl">
             <div className="text-center mb-16">
@@ -311,7 +298,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ── Download CTA ── */}
+        {/* Download CTA */}
         <section id="download" className="relative py-28 w-full overflow-hidden">
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #c2410c 0%, #f97316 50%, #ea580c 100%)" }} />
           <div className="absolute inset-0 opacity-[0.07]"
@@ -332,7 +319,7 @@ export default function LandingPage() {
                 <Button size="lg" data-testid="download-apk"
                   className="h-14 px-10 text-base rounded-full bg-white text-orange-600 hover:bg-white/92 shadow-2xl shadow-black/30 font-bold hover:-translate-y-1 active:translate-y-0 transition-all">
                   <Download className="w-5 h-5 mr-2" />
-                  Download APK — Free
+                  Download APK, Free
                 </Button>
               </a>
               <Link to="/onboarding">
@@ -347,7 +334,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* ── Footer ── */}
+      {/* Footer */}
       <footer className="bg-[#060606] text-white py-14 border-t border-white/5">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
@@ -368,13 +355,6 @@ export default function LandingPage() {
             <div>
               <h4 className="font-semibold mb-4 text-white text-xs uppercase tracking-wider">Company</h4>
               <ul className="space-y-3 text-sm text-white/40">
-                <li>
-                  <a href="https://x.com/CraizeG" target="_blank" rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors flex items-center gap-1.5">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    @CraizeG
-                  </a>
-                </li>
                 <li><a href="/roadmap" className="hover:text-primary transition-colors">Roadmap</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
