@@ -234,11 +234,19 @@ export default function RoadmapPage() {
       <header className="sticky top-0 z-50 border-b border-white/8 bg-black/40 backdrop-blur-xl">
         <div className="container flex h-16 max-w-5xl items-center justify-between px-4 mx-auto">
           <Link to="/"><Logo size={28} dark /></Link>
-          <Link to="/onboarding">
-            <span className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
-              Try Free &rarr;
-            </span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/token">
+              <button className="flex items-center gap-1.5 h-8 px-3 rounded-full bg-primary/12 hover:bg-primary/22 border border-primary/25 hover:border-primary/45 text-primary text-xs font-bold transition-all">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
+                $ZEG Token
+              </button>
+            </Link>
+            <Link to="/onboarding">
+              <span className="inline-flex items-center h-8 px-4 rounded-full bg-white/8 hover:bg-white/14 border border-white/10 hover:border-white/20 text-sm font-semibold text-white/70 hover:text-white transition-all">
+                Try Free
+              </span>
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -332,8 +340,11 @@ export default function RoadmapPage() {
         <div className="container px-4 mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25">© 2026 Craizeg.fun. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs text-white/30">
+            <Link to="/token" className="flex items-center gap-1 text-primary font-semibold hover:text-primary/80 transition-colors">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />$ZEG Token
+            </Link>
             <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
-            <Link to="/" className="hover:text-primary transition-colors">Back to Home</Link>
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
           </div>
         </div>
       </footer>
