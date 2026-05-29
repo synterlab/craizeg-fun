@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/layout/AppLayout";
 import LandingPage from "@/pages/landing";
 import RoadmapPage from "@/pages/roadmap";
+import PrivacyPage from "@/pages/privacy";
 import OnboardingPage from "@/pages/onboarding";
 import LoginPage from "@/pages/auth/login";
 import RegisterPage from "@/pages/auth/register";
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/roadmap" element={<RoadmapPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/onboarding" element={<OnboardingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
