@@ -8,6 +8,7 @@ import LandingPage from "@/pages/landing";
 import RoadmapPage from "@/pages/roadmap";
 import PrivacyPage from "@/pages/privacy";
 import TermsPage from "@/pages/terms";
+import ContactPage from "@/pages/contact";
 import OnboardingPage from "@/pages/onboarding";
 import LoginPage from "@/pages/auth/login";
 import RegisterPage from "@/pages/auth/register";
@@ -31,6 +32,7 @@ function App() {
             <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/onboarding" element={<OnboardingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
