@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { AppLayout } from "@/components/layout/AppLayout";
 import LandingPage from "@/pages/landing";
+import RoadmapPage from "@/pages/roadmap";
 import OnboardingPage from "@/pages/onboarding";
 import LoginPage from "@/pages/auth/login";
 import RegisterPage from "@/pages/auth/register";
@@ -25,10 +26,11 @@ function App() {
         <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/roadmap" element={<RoadmapPage />} />
             <Route path="/onboarding" element={<OnboardingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            
+
             <Route path="/app" element={<AppLayout />}>
               <Route index element={<DashboardPage />} />
               <Route path="tasks" element={<TasksPage />} />
