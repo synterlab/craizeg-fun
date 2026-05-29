@@ -328,7 +328,7 @@ export default function LandingPage() {
               Install once, works offline. No subscription, no tracking, no noise.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="/craizeg.apk" download>
+              <a href="https://github.com/synterlab/craizeg-fun/releases/latest/download/craizeg.apk" download>
                 <Button size="lg" data-testid="download-apk"
                   className="h-14 px-10 text-base rounded-full bg-white text-orange-600 hover:bg-white/92 shadow-2xl shadow-black/30 font-bold hover:-translate-y-1 active:translate-y-0 transition-all">
                   <Download className="w-5 h-5 mr-2" />
@@ -375,13 +375,14 @@ export default function LandingPage() {
                     @CraizeG
                   </a>
                 </li>
+                <li><a href="/roadmap" className="hover:text-primary transition-colors">Roadmap</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-white/6 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-white/25">© 2025 Craizeg.fun. All rights reserved.</p>
+            <p className="text-xs text-white/25">© 2026 Craizeg.fun. All rights reserved.</p>
             <p className="text-xs text-white/25 flex items-center gap-1">Made with <span className="text-primary">♥</span> for focused people</p>
           </div>
         </div>
