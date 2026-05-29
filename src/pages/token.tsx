@@ -223,7 +223,17 @@ export default function TokenPage() {
               </Link>
             </div>
 
-            {/* Live badge */}
+            {/* Hero product image */}
+            <div className="mt-12 w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-black/60 ring-1 ring-white/10">
+              <img
+                src="/images/zeg-hero-a.png"
+                alt="$ZEG Token — Craizeg on Solana"
+                className="w-full h-auto object-cover block"
+                loading="lazy"
+              />
+            </div>
+
+        {/* Live badge */}
             <div className="mt-8 inline-flex items-center gap-2 text-sm text-white/50">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Token launched May 29, 2026 · Live on Solana
