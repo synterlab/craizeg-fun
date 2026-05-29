@@ -20,7 +20,7 @@ const SolanaIcon = () => (
   </svg>
 );
 
-const CA_ADDRESS = "";
+const CA_ADDRESS = "U5bupNNukh6S76o3jPfchzbUqq19NCZjeUNeBy5EASY";
 
 const UTILITY_ITEMS = [
   {
