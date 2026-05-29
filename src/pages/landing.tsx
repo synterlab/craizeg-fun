@@ -8,89 +8,74 @@ import {
   Sparkles, Shield, Zap,
 } from "lucide-react";
 
-/* ─── Data ──────────────────────────────────────────── */
+/* ─── Data ─────────────────────────────── */
 const FEATURES = [
-  { icon: CheckSquare, title: "Tasks",      desc: "Simple, satisfying lists that actually get done." },
-  { icon: Target,      title: "Goals",      desc: "Track progress visually with milestones." },
-  { icon: Calendar,    title: "Calendar",   desc: "Your time, mapped out clearly." },
-  { icon: FileText,    title: "Notes",      desc: "Thoughts and ideas, safely stored." },
-  { icon: BarChart2,   title: "Analytics",  desc: "Understand your habits and streaks." },
-  { icon: Bell,        title: "Reminders",  desc: "Never miss a beat again." },
+  { icon: CheckSquare, title: "Tasks",     desc: "Simple, satisfying lists that actually get done." },
+  { icon: Target,      title: "Goals",     desc: "Track progress visually with milestones." },
+  { icon: Calendar,    title: "Calendar",  desc: "Your time, mapped out clearly." },
+  { icon: FileText,    title: "Notes",     desc: "Thoughts and ideas, safely stored." },
+  { icon: BarChart2,   title: "Analytics", desc: "Understand your habits and streaks." },
+  { icon: Bell,        title: "Reminders", desc: "Never miss a beat again." },
 ];
 
 const TICKER_ITEMS = [
-  "Free forever",
-  "Works offline",
-  "Android APK",
-  "PWA ready",
-  "No account needed",
-  "Privacy first",
-  "Open source",
-  "5 core features",
+  "Free forever", "Works offline", "Android APK",
+  "PWA ready", "No account needed", "Privacy first",
+  "Open source", "5 core features",
 ];
 
 const STEPS = [
-  { icon: Download,  num: "01", title: "Download or open",  desc: "Install the APK or open the web app — no sign-up required." },
-  { icon: Sparkles,  num: "02", title: "Set your goals",    desc: "Add tasks, milestones, and reminders in under a minute." },
-  { icon: Zap,       num: "03", title: "Stay on track",     desc: "Check off tasks, visualise progress, build streaks." },
+  { icon: Download, num: "01", title: "Download or open",  desc: "Install the APK or open the web app — no sign-up required." },
+  { icon: Sparkles, num: "02", title: "Set your goals",    desc: "Add tasks, milestones, and reminders in under a minute." },
+  { icon: Zap,      num: "03", title: "Stay on track",     desc: "Check off tasks, visualise progress, build streaks." },
 ];
 
-/* ─── Phone mock (pure CSS) ────────────────────────── */
+/* ─── Phone mockup (pure CSS) ─────────── */
 function PhoneMock() {
   return (
-    <div className="float-phone relative mx-auto" style={{ width: 220, height: 440 }}>
-      {/* Glow */}
-      <div className="absolute inset-0 rounded-[40px] blur-2xl opacity-30"
-        style={{ background: "radial-gradient(ellipse at center, #f97316 0%, transparent 70%)", transform: "scale(1.15)" }} />
-      {/* Frame */}
-      <div className="relative w-full h-full rounded-[40px] border-2 border-white/20 bg-[#0d0d0d] overflow-hidden shadow-2xl shadow-black/60">
-        {/* Notch */}
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 rounded-full bg-black/70 z-10" />
-        {/* Screen content */}
-        <div className="absolute inset-0 pt-10 px-3 pb-3 flex flex-col gap-2">
-          {/* Header bar */}
-          <div className="flex items-center justify-between px-2 py-2">
-            <div className="h-3 w-20 rounded-full bg-white/20" />
+    <div className="float-phone relative mx-auto" style={{ width: 210, height: 420 }}>
+      <div className="absolute inset-0 rounded-[38px] blur-2xl opacity-40"
+        style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)", transform: "scale(1.2)" }} />
+      <div className="relative w-full h-full rounded-[38px] border-2 border-white/20 bg-[#0d0d0d] overflow-hidden shadow-2xl shadow-black/70">
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 rounded-full bg-black/80 z-10" />
+        <div className="absolute inset-0 pt-9 px-3 pb-3 flex flex-col gap-2">
+          <div className="flex items-center justify-between px-2 py-1.5">
+            <div className="h-2.5 w-20 rounded-full bg-white/20" />
             <div className="h-6 w-6 rounded-full bg-primary/60" />
           </div>
-          {/* Greeting */}
           <div className="px-2 mb-1">
-            <div className="h-3 w-28 rounded-full bg-white/30 mb-1.5" />
-            <div className="h-2 w-20 rounded-full bg-white/15" />
+            <div className="h-2.5 w-24 rounded-full bg-white/30 mb-1.5" />
+            <div className="h-1.5 w-16 rounded-full bg-white/15" />
           </div>
-          {/* Stats card */}
           <div className="rounded-2xl bg-primary/80 p-3 flex items-center justify-between">
             <div>
-              <div className="h-2 w-16 rounded-full bg-white/50 mb-1.5" />
-              <div className="h-5 w-8 rounded-md bg-white/90" />
+              <div className="h-1.5 w-14 rounded-full bg-white/50 mb-1.5" />
+              <div className="h-4 w-8 rounded-md bg-white/90" />
             </div>
-            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
               <CheckSquare className="w-4 h-4 text-white/80" />
             </div>
           </div>
-          {/* Task items */}
-          {[85, 60, 45].map((w, i) => (
-            <div key={i} className="flex items-center gap-2 bg-white/8 rounded-xl px-3 py-2.5">
-              <div className="w-4 h-4 rounded-full border border-primary/60 flex-shrink-0 flex items-center justify-center">
-                {i === 0 && <div className="w-2 h-2 rounded-full bg-primary" />}
+          {[80, 60, 45].map((w, i) => (
+            <div key={i} className="flex items-center gap-2 bg-white/8 rounded-xl px-3 py-2">
+              <div className="w-3.5 h-3.5 rounded-full border border-primary/60 flex-shrink-0 flex items-center justify-center">
+                {i === 0 && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
               </div>
-              <div className="h-2 rounded-full bg-white/25 flex-1" style={{ maxWidth: `${w}%` }} />
+              <div className="h-1.5 rounded-full bg-white/25 flex-1" style={{ maxWidth: `${w}%` }} />
             </div>
           ))}
-          {/* Goal progress */}
-          <div className="bg-white/8 rounded-xl px-3 py-2.5 mt-1">
-            <div className="flex justify-between mb-2">
-              <div className="h-2 w-20 rounded-full bg-white/20" />
-              <div className="h-2 w-8 rounded-full bg-primary/60" />
+          <div className="bg-white/8 rounded-xl px-3 py-2 mt-1">
+            <div className="flex justify-between mb-1.5">
+              <div className="h-1.5 w-16 rounded-full bg-white/20" />
+              <div className="h-1.5 w-7 rounded-full bg-primary/60" />
             </div>
-            <div className="h-1.5 w-full rounded-full bg-white/10">
+            <div className="h-1 w-full rounded-full bg-white/10">
               <div className="h-full rounded-full bg-primary/80" style={{ width: "68%" }} />
             </div>
           </div>
-          {/* Bottom nav mock */}
-          <div className="absolute bottom-2 left-3 right-3 h-10 rounded-2xl bg-white/8 border border-white/10 flex items-center justify-around px-2">
-            {[Home, CheckSquare, Target, Calendar, Bell].map((_, i) => (
-              <div key={i} className={`w-5 h-5 rounded-md ${i === 0 ? "bg-primary/70" : "bg-white/15"}`} />
+          <div className="absolute bottom-2 left-3 right-3 h-9 rounded-2xl bg-white/8 border border-white/10 flex items-center justify-around px-2">
+            {[0,1,2,3,4].map(i => (
+              <div key={i} className={`w-4 h-4 rounded-md ${i === 0 ? "bg-primary/70" : "bg-white/15"}`} />
             ))}
           </div>
         </div>
@@ -99,7 +84,7 @@ function PhoneMock() {
   );
 }
 
-/* ─── Main component ────────────────────────────────── */
+/* ─── Main ─────────────────────────────── */
 export default function LandingPage() {
   const featRef  = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
@@ -145,42 +130,72 @@ export default function LandingPage() {
 
       <main className="flex-1 w-full">
 
-        {/* ── Hero ── */}
+        {/* ── Hero — full-viewport video background ── */}
         <section className="relative w-full min-h-[94dvh] flex items-center justify-center overflow-hidden">
 
-          {/* Aurora background */}
-          <div className="absolute inset-0 z-0 overflow-hidden bg-[#080808]">
-            <div className="aurora-blob-1 absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-25"
-              style={{ background: "radial-gradient(ellipse, #c2410c 0%, transparent 70%)" }} />
-            <div className="aurora-blob-2 absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full opacity-20"
-              style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)" }} />
-            <div className="aurora-blob-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-10"
-              style={{ background: "radial-gradient(ellipse, #fbbf24 0%, transparent 60%)" }} />
-            {/* Grain texture */}
-            <div className="absolute inset-0 opacity-[0.03]"
-              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundRepeat: "repeat", backgroundSize: "128px" }} />
+          {/* Video background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: "brightness(0.35) saturate(0.8)" }}
+            >
+              {/* SD for mobile, HD for larger screens */}
+              <source
+                src="https://videos.pexels.com/video-files/3576378/3576378-hd_1920_1080_25fps.mp4"
+                type="video/mp4"
+                media="(min-width: 768px)"
+              />
+              <source
+                src="https://videos.pexels.com/video-files/3576378/3576378-sd_640_360_25fps.mp4"
+                type="video/mp4"
+              />
+            </video>
+
+            {/* Warm orange tone overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-950/60 via-black/20 to-black/50" />
+            {/* Bottom fade to section below */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#080808] to-transparent" />
+            {/* Top fade */}
+            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/30 to-transparent" />
+
+            {/* Subtle grain */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{
+                backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                backgroundRepeat: "repeat",
+                backgroundSize: "128px",
+              }}
+            />
           </div>
 
-          {/* Content — mobile: stacked, md: side-by-side */}
+          {/* Hero content */}
           <div className="container relative z-10 px-4 mx-auto max-w-5xl">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-8 py-16 md:py-24">
 
-              {/* Text side */}
+              {/* Text */}
               <div className="flex-1 text-center md:text-left text-white">
-                {/* Eyebrow pill */}
                 <div className="slide-up inline-flex items-center gap-2 bg-white/8 border border-white/15 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-8 uppercase tracking-widest">
                   <Shield className="w-3 h-3 text-primary" />
                   Personal · Private · Free
                 </div>
 
-                <h1 className="slide-up delay-100 font-serif font-black leading-[1.08] mb-6"
-                  style={{ fontSize: "clamp(2.6rem, 7vw, 4.5rem)", textShadow: "0 2px 40px rgba(0,0,0,0.5)" }}>
+                <h1
+                  className="slide-up delay-100 font-serif font-black leading-[1.05] mb-6"
+                  style={{ fontSize: "clamp(2.6rem, 7vw, 4.5rem)", textShadow: "0 2px 48px rgba(0,0,0,0.6)" }}
+                >
                   Get it all organised,{" "}
                   <span className="gradient-text block sm:inline">your way.</span>
                 </h1>
 
-                <p className="slide-up delay-200 text-white/65 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed"
-                  style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)" }}>
+                <p
+                  className="slide-up delay-200 text-white/70 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed"
+                  style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)", textShadow: "0 1px 12px rgba(0,0,0,0.5)" }}
+                >
                   Tasks, goals, notes, and calendar — all in one quiet space
                   designed for people who want to stay sharp without the noise.
                 </p>
@@ -188,14 +203,14 @@ export default function LandingPage() {
                 <div className="slide-up delay-300 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
                   <a href="#download" className="w-full sm:w-auto">
                     <Button size="lg" data-testid="hero-download"
-                      className="pulse-cta w-full sm:w-auto h-13 px-8 rounded-full text-base font-bold shadow-2xl shadow-primary/40 hover:shadow-primary/60 hover:-translate-y-0.5 transition-all active:translate-y-0">
+                      className="pulse-cta w-full sm:w-auto h-14 px-8 rounded-full text-base font-bold shadow-2xl shadow-primary/50 hover:shadow-primary/70 hover:-translate-y-0.5 transition-all active:translate-y-0">
                       <Download className="w-4 h-4 mr-2" />
                       Download APK
                     </Button>
                   </a>
                   <Link to="/onboarding" className="w-full sm:w-auto">
                     <Button variant="outline" size="lg" data-testid="hero-try"
-                      className="w-full sm:w-auto h-13 px-8 rounded-full text-base bg-white/8 hover:bg-white/15 text-white border-white/20 hover:-translate-y-0.5 transition-all active:translate-y-0">
+                      className="w-full sm:w-auto h-14 px-8 rounded-full text-base bg-white/10 hover:bg-white/18 text-white border-white/25 backdrop-blur-sm hover:-translate-y-0.5 transition-all active:translate-y-0">
                       Try in Browser
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -203,24 +218,24 @@ export default function LandingPage() {
                 </div>
 
                 {/* Micro-stats */}
-                <div className="slide-up delay-400 flex items-center justify-center md:justify-start gap-6 mt-10">
+                <div className="slide-up delay-400 flex items-center justify-center md:justify-start gap-8 mt-10">
                   {[["100%", "Free"], ["PWA", "Offline"], ["Zero", "Tracking"]].map(([val, label]) => (
                     <div key={label} className="text-center">
-                      <p className="text-white font-bold text-lg leading-none">{val}</p>
+                      <p className="text-white font-bold text-lg leading-none" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{val}</p>
                       <p className="text-white/40 text-xs mt-0.5 uppercase tracking-wider">{label}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Phone side */}
+              {/* Phone mockup — hidden on small mobile, shown sm+ */}
               <div className="slide-up delay-500 flex-shrink-0 hidden sm:block">
                 <PhoneMock />
               </div>
             </div>
 
             {/* Scroll hint */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
               <span className="text-[10px] text-white/50 uppercase tracking-widest font-medium">Scroll</span>
               <div className="w-px h-8 bg-gradient-to-b from-white/50 to-transparent" style={{ animation: "sweep 2s ease-in-out infinite" }} />
             </div>
@@ -252,7 +267,6 @@ export default function LandingPage() {
                 Six focused tools, zero bloat. Each feature earns its place.
               </p>
             </div>
-
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {FEATURES.map((f, i) => (
                 <div key={i} className="feature-card bg-white/4 border border-white/8 rounded-2xl p-5 group"
@@ -278,11 +292,8 @@ export default function LandingPage() {
                 Up and running in minutes.
               </h2>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-              {/* Connector line (desktop) */}
               <div className="hidden md:block absolute top-8 left-[calc(16.7%+1rem)] right-[calc(16.7%+1rem)] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-
               {STEPS.map((step, i) => (
                 <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left"
                   style={stepsVis ? { animation: `slide-up 0.7s cubic-bezier(.22,1,.36,1) ${i * 120}ms both` } : { opacity: 0 }}>
@@ -303,13 +314,10 @@ export default function LandingPage() {
         {/* ── Download CTA ── */}
         <section id="download" className="relative py-28 w-full overflow-hidden">
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #c2410c 0%, #f97316 50%, #ea580c 100%)" }} />
-          {/* Mesh pattern */}
           <div className="absolute inset-0 opacity-[0.07]"
             style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
-          {/* Glow blobs */}
           <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-white/10 blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-black/20 blur-3xl translate-x-1/2 translate-y-1/2" />
-
           <div className="container relative px-4 mx-auto max-w-3xl text-center z-10">
             <p className="text-white/70 text-xs uppercase tracking-[0.25em] font-bold mb-4">Android · Free · 15 MB</p>
             <h2 className="font-serif font-black text-white mb-6 leading-tight"
@@ -379,14 +387,5 @@ export default function LandingPage() {
         </div>
       </footer>
     </div>
-  );
-}
-
-/* Local alias needed for phone mock nav icons */
-function Home(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
   );
 }
