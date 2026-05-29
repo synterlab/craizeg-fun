@@ -25,9 +25,9 @@ const SHORT_TERM: Milestone[] = [
     items: [
       "Web platform goes live at craizeg.fun",
       "Core features: Tasks, Goals, Notes, Calendar",
-      "PWA support — installable on any device",
+      "PWA support, installable on any device",
       "Android APK available for direct download",
-      "Guest mode — no sign-up required",
+      "Guest mode, no sign-up required",
     ],
   },
   {
@@ -36,11 +36,11 @@ const SHORT_TERM: Milestone[] = [
     status: "upcoming",
     icon: Star,
     items: [
-      "Analytics dashboard — streaks, habits, heatmap",
-      "Reminders & push notifications",
-      "Dark / light theme toggle",
+      "Analytics dashboard with streaks, habits, and heatmap",
+      "Reminders and push notifications",
+      "Dark and light theme toggle",
       "Offline-first sync with local storage",
-      "Performance & accessibility improvements",
+      "Performance and accessibility improvements",
     ],
   },
   {
@@ -50,7 +50,7 @@ const SHORT_TERM: Milestone[] = [
     icon: Link2,
     items: [
       "On-chain task completion verification",
-      "Achievement NFTs — earn rewards for streaks",
+      "Achievement NFTs, earn rewards for streaks",
       "Decentralised goal milestones via smart contracts",
       "Optional wallet connect (no crypto required to use app)",
       "Transparent, tamper-proof productivity log",
@@ -61,13 +61,13 @@ const SHORT_TERM: Milestone[] = [
 const LONG_TERM: Milestone[] = [
   {
     date: "Q3 2026",
-    title: "Play Store & App Store",
+    title: "Play Store and App Store",
     status: "upcoming",
     icon: Smartphone,
     items: [
       "Native Android app submitted to Google Play Store",
       "Native iOS app submitted to Apple App Store",
-      "In-app review & rating system",
+      "In-app review and rating system",
       "Push notification improvements for native",
     ],
   },
@@ -80,7 +80,7 @@ const LONG_TERM: Milestone[] = [
       "Shared workspaces for small teams",
       "Assign tasks to team members",
       "Collaborative goal tracking",
-      "Comments & activity feed on shared goals",
+      "Comments and activity feed on shared goals",
     ],
   },
   {
@@ -91,8 +91,8 @@ const LONG_TERM: Milestone[] = [
     items: [
       "Natural language task creation",
       "Smart scheduling suggestions",
-      "AI-powered habit analysis & insights",
-      "Goal decomposition — big goals broken into steps",
+      "AI-powered habit analysis and insights",
+      "Goal decomposition: big goals broken into steps",
     ],
   },
   {
@@ -102,34 +102,29 @@ const LONG_TERM: Milestone[] = [
     icon: Globe,
     items: [
       "Multi-language support (10+ languages)",
-      "Enterprise tier with SSO & admin controls",
+      "Enterprise tier with SSO and admin controls",
       "Public API for third-party integrations",
-      "Zapier & Notion integration",
+      "Zapier and Notion integration",
     ],
   },
 ];
 
 const STATUS_CONFIG: Record<Status, { label: string; color: string; Icon: React.ElementType }> = {
-  done:     { label: "Completed",  color: "text-green-400 bg-green-400/10 border-green-400/20", Icon: CheckCircle2 },
+  done:     { label: "Completed",   color: "text-green-400 bg-green-400/10 border-green-400/20", Icon: CheckCircle2 },
   active:   { label: "In Progress", color: "text-primary bg-primary/10 border-primary/20",      Icon: Clock },
-  upcoming: { label: "Upcoming",   color: "text-white/40 bg-white/5 border-white/10",           Icon: Circle },
+  upcoming: { label: "Upcoming",    color: "text-white/40 bg-white/5 border-white/10",           Icon: Circle },
 };
 
 function MilestoneCard({ m, i }: { m: Milestone; i: number }) {
   const s = STATUS_CONFIG[m.status];
   return (
     <div className="relative flex gap-4 md:gap-6">
-      {/* Timeline connector */}
       <div className="flex flex-col items-center flex-shrink-0">
         <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border ${s.color} transition-all`}>
           <m.icon className="w-5 h-5" />
         </div>
-        {i < SHORT_TERM.length - 1 || true ? (
-          <div className="flex-1 w-px bg-white/8 mt-2 min-h-[2rem]" />
-        ) : null}
+        <div className="flex-1 w-px bg-white/8 mt-2 min-h-[2rem]" />
       </div>
-
-      {/* Content */}
       <div className="flex-1 pb-10">
         <div className="flex flex-wrap items-center gap-3 mb-3">
           <span className="text-primary font-bold text-sm uppercase tracking-widest">{m.date}</span>
@@ -156,13 +151,12 @@ export default function RoadmapPage() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-[#080808] font-sans overflow-x-hidden">
 
-      {/* Navbar */}
       <header className="sticky top-0 z-50 border-b border-white/8 bg-black/40 backdrop-blur-xl">
         <div className="container flex h-16 max-w-5xl items-center justify-between px-4 mx-auto">
           <Link to="/"><Logo size={28} dark /></Link>
           <Link to="/onboarding">
             <span className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
-              Try Free →
+              Try Free &rarr;
             </span>
           </Link>
         </div>
@@ -170,13 +164,11 @@ export default function RoadmapPage() {
 
       <main className="flex-1">
 
-        {/* Hero */}
         <section className="relative py-20 md:py-28 overflow-hidden">
-          {/* Aurora background */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="aurora-blob-1 absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-15"
+            <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-15"
               style={{ background: "radial-gradient(ellipse, #f97316 0%, transparent 70%)" }} />
-            <div className="aurora-blob-2 absolute -bottom-20 right-0 w-[400px] h-[400px] rounded-full opacity-10"
+            <div className="absolute -bottom-20 right-0 w-[400px] h-[400px] rounded-full opacity-10"
               style={{ background: "radial-gradient(ellipse, #c2410c 0%, transparent 70%)" }} />
           </div>
           <div className="container relative px-4 mx-auto max-w-3xl text-center z-10">
@@ -195,16 +187,13 @@ export default function RoadmapPage() {
           </div>
         </section>
 
-        {/* Short-term roadmap */}
         <section className="pb-8 border-t border-white/5">
           <div className="container px-4 mx-auto max-w-3xl">
-            <div className="py-12 mb-4 flex items-center gap-4">
-              <div>
-                <Badge className="bg-primary/15 text-primary border-primary/20 text-xs font-bold uppercase tracking-wider mb-2">
-                  Short-term Roadmap
-                </Badge>
-                <h2 className="font-serif text-white font-black text-2xl md:text-3xl">May — July 2026</h2>
-              </div>
+            <div className="py-12 mb-4">
+              <Badge className="bg-primary/15 text-primary border-primary/20 text-xs font-bold uppercase tracking-wider mb-2">
+                Short-term Roadmap
+              </Badge>
+              <h2 className="font-serif text-white font-black text-2xl md:text-3xl">May to July 2026</h2>
             </div>
             <div>
               {SHORT_TERM.map((m, i) => <MilestoneCard key={i} m={m} i={i} />)}
@@ -212,25 +201,21 @@ export default function RoadmapPage() {
           </div>
         </section>
 
-        {/* Divider */}
         <div className="border-t border-white/8 bg-[#0a0a0a] py-6">
           <div className="container px-4 mx-auto max-w-3xl">
             <p className="text-white/25 text-xs uppercase tracking-widest text-center font-semibold">
-              Beyond July 2026 — Long-term Vision
+              Beyond July 2026: Long-term Vision
             </p>
           </div>
         </div>
 
-        {/* Long-term roadmap */}
         <section className="bg-[#0a0a0a] pb-20">
           <div className="container px-4 mx-auto max-w-3xl">
-            <div className="py-12 mb-4 flex items-center gap-4">
-              <div>
-                <Badge className="bg-white/8 text-white/50 border-white/10 text-xs font-bold uppercase tracking-wider mb-2">
-                  Long-term Roadmap
-                </Badge>
-                <h2 className="font-serif text-white font-black text-2xl md:text-3xl">Q3 2026 & Beyond</h2>
-              </div>
+            <div className="py-12 mb-4">
+              <Badge className="bg-white/8 text-white/50 border-white/10 text-xs font-bold uppercase tracking-wider mb-2">
+                Long-term Roadmap
+              </Badge>
+              <h2 className="font-serif text-white font-black text-2xl md:text-3xl">Q3 2026 and Beyond</h2>
             </div>
             <div>
               {LONG_TERM.map((m, i) => <MilestoneCard key={i} m={m} i={i} />)}
@@ -238,7 +223,6 @@ export default function RoadmapPage() {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="border-t border-white/8 py-20 text-center">
           <div className="container px-4 mx-auto max-w-xl">
             <h2 className="font-serif font-black text-white text-2xl md:text-3xl mb-4">
@@ -246,12 +230,12 @@ export default function RoadmapPage() {
             </h2>
             <p className="text-white/45 mb-8 leading-relaxed">
               Craizeg is free, open, and built for real people.
-              Start today — no account needed.
+              Start today, no account needed.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/onboarding">
                 <button className="h-12 px-8 rounded-full bg-primary hover:bg-primary/90 text-white font-bold text-sm shadow-lg shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0 transition-all">
-                  Try Craizeg Free →
+                  Try Craizeg Free &rarr;
                 </button>
               </Link>
               <a href="https://x.com/CraizeG" target="_blank" rel="noopener noreferrer"
@@ -264,11 +248,10 @@ export default function RoadmapPage() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-white/5 bg-[#060606] py-8">
         <div className="container px-4 mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25">© 2026 Craizeg.fun. All rights reserved.</p>
-          <Link to="/" className="text-xs text-white/30 hover:text-primary transition-colors">← Back to Home</Link>
+          <Link to="/" className="text-xs text-white/30 hover:text-primary transition-colors">Back to Home</Link>
         </div>
       </footer>
     </div>
