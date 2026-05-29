@@ -97,9 +97,9 @@ const SECTIONS: Section[] = [
         <p>Craizeg uses a minimal set of third-party services:</p>
         <ul className="space-y-2 pl-4">
           {[
-            "Vercel — hosting and delivery of the web app",
-            "GitHub — open-source code repository and APK distribution",
-            "Cloudflare (optional) — DDoS protection and caching",
+            "Vercel: hosting and delivery of the web app",
+            "GitHub: open-source code repository and APK distribution",
+            "Cloudflare (optional): DDoS protection and caching",
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-2">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0" />
@@ -249,6 +249,7 @@ export default function PrivacyPage() {
         <div className="container px-4 mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/25">© 2026 Craizeg.fun. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs text-white/30">
+            <Link to="/terms" className="hover:text-primary transition-colors">Terms</Link>
             <Link to="/roadmap" className="hover:text-primary transition-colors">Roadmap</Link>
             <Link to="/" className="hover:text-primary transition-colors">Back to Home</Link>
           </div>
