@@ -115,7 +115,7 @@ export default function LandingPage() {
         <div className="container flex h-16 max-w-5xl items-center justify-between px-4 mx-auto">
           <Logo size={30} dark />
           <nav className="flex items-center gap-2">
-            {/* X / Twitter — visible and prominent */}
+            {/* X / Twitter - visible and prominent */}
             <a
               href="https://x.com/CraizeG"
               target="_blank"
