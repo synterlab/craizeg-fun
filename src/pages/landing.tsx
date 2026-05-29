@@ -126,7 +126,13 @@ export default function LandingPage() {
               <XIcon />
               <span className="hidden sm:inline">@CraizeG</span>
             </a>
-            <Link to="/login">
+            <Link to="/token">
+                <button className="flex items-center gap-1.5 h-8 px-3 rounded-full bg-primary/15 hover:bg-primary/25 border border-primary/30 hover:border-primary/50 text-primary text-xs font-bold transition-all">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  $ZEG
+                </button>
+              </Link>
+              <Link to="/login">
               <Button variant="ghost" size="sm"
                 className="hidden sm:inline-flex text-white/70 hover:text-white hover:bg-white/10 text-sm h-8 px-3">
                 Sign In
