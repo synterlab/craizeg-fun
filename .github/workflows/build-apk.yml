@@ -31,13 +31,13 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Install dependencies (npm)
+      - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build web app
         run: npm run build
 
-      - name: Install Capacitor (post-build)
+      - name: Install Capacitor
         run: npm install @capacitor/core@^6 @capacitor/android@^6 @capacitor/cli@^6 --legacy-peer-deps
 
       - name: Add Android platform
@@ -45,6 +45,33 @@ jobs:
 
       - name: Sync Capacitor
         run: npx cap sync android
+
+      - name: Generate Craizeg app icon
+        run: |
+          sudo apt-get install -y imagemagick 2>/dev/null || true
+          convert -size 1024x1024 gradient:'#f97316-#ea580c' \
+            -font DejaVu-Sans-Bold -pointsize 660 \
+            -fill white -gravity center -annotate 0 'C' \
+            /tmp/icon.png
+          for entry in "mipmap-mdpi:48" "mipmap-hdpi:72" "mipmap-xhdpi:96" "mipmap-xxhdpi:144" "mipmap-xxxhdpi:192"; do
+            dir="${entry%%:*}"
+            size="${entry##*:}"
+            dest="android/app/src/main/res/$dir"
+            convert /tmp/icon.png -resize "${size}x${size}" "$dest/ic_launcher.png"
+            convert /tmp/icon.png -resize "${size}x${size}" "$dest/ic_launcher_round.png"
+            [ -f "$dest/ic_launcher_foreground.png" ] && \
+              convert /tmp/icon.png -resize "${size}x${size}" "$dest/ic_launcher_foreground.png" || true
+          done
+          echo "Icons generated"
+
+      - name: Generate splash screen
+        run: |
+          convert -size 1080x1920 xc:'#080808' \
+            /tmp/icon.png -resize 320x320 -gravity center -composite \
+            /tmp/splash.png
+          mkdir -p android/app/src/main/res/drawable
+          cp /tmp/splash.png android/app/src/main/res/drawable/splash.png
+          echo "Splash generated"
 
       - name: Make gradlew executable
         run: chmod +x android/gradlew
@@ -76,7 +103,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-build
-          name: "Craizeg — Latest Build"
+          name: "Craizeg - Latest Build"
           body: |
             ## Craizeg Android APK
 
@@ -84,11 +111,11 @@ jobs:
 
             ### How to install
             1. Download **craizeg.apk** below
-            2. On Android: go to **Settings → Security → Enable Unknown sources**
-            3. Open the downloaded APK and tap **Install**
-            4. Launch Craizeg — no account needed
+            2. On Android: Settings > Security > Enable Unknown sources
+            3. Open the downloaded APK and tap Install
+            4. Launch Craizeg, no account needed
 
-            > Requires Android 7.0 (API 24) or higher · ~15 MB
+            > Requires Android 7.0 (API 24) or higher, approx 15 MB
           files: craizeg.apk
           make_latest: true
         env:
