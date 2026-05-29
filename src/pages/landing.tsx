@@ -356,7 +356,7 @@ export default function LandingPage() {
               <h4 className="font-semibold mb-4 text-white text-xs uppercase tracking-wider">Company</h4>
               <ul className="space-y-3 text-sm text-white/40">
                 <li><a href="/roadmap" className="hover:text-primary transition-colors">Roadmap</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
+                <li><a href="/privacy" className="hover:text-primary transition-colors">Privacy</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
               </ul>
             </div>
