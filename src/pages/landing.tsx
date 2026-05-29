@@ -357,7 +357,7 @@ export default function LandingPage() {
               <ul className="space-y-3 text-sm text-white/40">
                 <li><a href="/roadmap" className="hover:text-primary transition-colors">Roadmap</a></li>
                 <li><a href="/privacy" className="hover:text-primary transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
+                <li><a href="/terms" className="hover:text-primary transition-colors">Terms</a></li>
               </ul>
             </div>
           </div>
